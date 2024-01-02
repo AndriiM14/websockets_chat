@@ -1,4 +1,4 @@
-import "dart:io" show HttpServer, stderr;
+import "dart:io" show HttpServer, HttpRequest, stderr;
 import "dart:convert" show utf8;
 
 class Server {
@@ -7,6 +7,11 @@ class Server {
 
   Server(this.ip, this.port);
 
+  void log(HttpRequest request) {
+    print(
+        "[+]${request.method}: ${request.headers.toString().split("\n").join(" ")}");
+  }
+
   void listen() async {
     try {
       final httpServer = await HttpServer.bind(ip, port);
@@ -14,6 +19,7 @@ class Server {
 
       try {
         await httpServer.forEach((final request) async {
+          log(request);
           switch (request.method) {
             case "GET":
               request.response.write("Hello from dart server\n");
