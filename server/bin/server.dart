@@ -1,5 +1,6 @@
-import 'package:server/server.dart' as server;
+import 'package:server/server.dart' show Server;
 
-void main(List<String> arguments) {
-  print('Hello world: ${server.calculate()}!');
+void main(List<String> args) {
+	final server = Server("localhost", 8080);
+	server.listen();
 }
