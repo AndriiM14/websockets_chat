@@ -107,9 +107,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     suffixIcon: _input.isEmpty
                         ? null
                         : InkWell(
-                            child: const Icon(Icons.send),
-                            // ignore: avoid_print
                             onTap: _handleSend,
+                            child: const Icon(Icons.send),
                           )),
               ),
             ),
