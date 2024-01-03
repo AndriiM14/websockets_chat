@@ -39,7 +39,7 @@ class Server {
             }
           }, onDone: () {
             print("[-]${request.connectionInfo?.remoteAddress} disconnected.");
-						connections.remove(socket);
+            connections.remove(socket);
           }, onError: logError, cancelOnError: true);
         });
       } catch (e) {
