@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -36,7 +37,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _wsUrl = Uri.parse('ws://127.0.0.1:8080');
+  final _wsUrl = Uri.parse(
+      Platform.isLinux ? 'ws://127.0.0.1:8080' : 'ws://10.0.2.2:8080');
   late final _wsChannel = WebSocketChannel.connect(_wsUrl);
 
   late TextEditingController _inputController;
